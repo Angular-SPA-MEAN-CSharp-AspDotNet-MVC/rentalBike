@@ -1,0 +1,75 @@
+<div class="container">
+  <h3>Step One: Plese Select a Bike:</h3>
+  <ul class="row">
+    <li *ngFor="let product of bikeItems" class="liNew">
+      <span class=" col-sm-9 col-md-3">
+        <h5>{{ product.name }}</h5>
+        <img src="{{ product.image }}" /><br />
+        Price : {{ product.price }}
+        <label for="">
+          &nbsp;&nbsp; Select
+          <input
+            type="radio"
+            name="bikeItem"
+            (change)="changeTotalVal(product)"
+          />
+        </label>
+      </span>
+    </li>
+  </ul>
+</div>
+
+<div class="container">
+  <h3>Step Two: Plese Select an accessory:</h3>
+  <ul class="row">
+    <li *ngFor="let product of accessoryItems" class="liNew">
+      <span class=" col-sm-9 col-md-3">
+        <h5>{{ product.name }}</h5>
+        <img src="{{ product.image }}" /><br />
+        Price: {{ product.price }}
+        <label>
+          &nbsp;&nbsp; Select
+          <input
+            type="radio"
+            name="accessoryItem"
+            (change)="changeTotalVal(product)"
+          />
+        </label>
+      </span>
+    </li>
+  </ul>
+</div>
+>
+
+<div class="container">
+  <h3>Step Three: Plese Select an insurance (Optional):</h3>
+  <ul class="row">
+    <li *ngFor="let product of addonItems" class="liNew">
+      <span class=" col-sm-9 col-md-3">
+        <h5>{{ product.name }}</h5>
+        <img src="{{ product.image }}" /><br />
+        Price: {{ product.price }}
+        <label for="">
+          &nbsp;&nbsp; Select
+          <input
+            type="radio"
+            name="addonItem"
+            (change)="changeTotalVal(product)"
+          />
+        </label>
+      </span>
+    </li>
+  </ul>
+</div>
+
+<div class="container">
+  <div class="pull-right">
+    <h5>Total: {{ totalValue }}</h5>
+    <button type="button" class="btn btn-success" [disabled]="!validIpt">
+      Process Order
+    </button>
+  </div>
+  <label *ngIf="!pristineStatus && !validIpt">
+    Please select at least one bike and one accessary, and click process order!
+  </label>
+</div>
